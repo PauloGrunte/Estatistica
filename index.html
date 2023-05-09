@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Java</title>
+</head>
+<body>
+    <table>
+        <div>
+            <label for="Num1">Digite o primeiro numero: </label>
+            <input type="number" id="Num1" min="0" max="255" > </br> 
+            <label for="Num2">Digite o segundo numero: </label>
+            <input type="number" id="Num2" min="0" max="255"></br>
+            <label for="Num3">Digite o terceiro numero: </label>
+            <input type="number" id="Num3" min="0" max="255"></br>
+            <label for="Num4">Digite o quarto numero: </label>
+            <input type="number" id="Num4" min="0" max="255"></br>
+            <button onclick="func1()">Clique Aqui</button>
+            <h3>A Média é:</h3>
+            <p id="media"></p>
+            <h3> A Mediana é: </h3>
+            <p id="mediana"></p>
+            <h3>A variância amostral é: </h3>
+            <p id="variancia"></p>
+            <h3>O desvio padrão é: </h3>
+            <p id="Dv"></p>
+            <h3>O coeficiente de desvio é: </h3>
+            <p id="coefDes"></p>
+            <p id="classificacao"></p>
+
+        </div>
+    </table>
+    <style>
+        input
+        {
+            margin-bottom: 5px;
+            border-radius: 3px;
+        }
+    </style>
+    <script>
+        function func1()
+        {
+        var valor1 = document.querySelector("#Num1").value;
+        var valor2 = document.querySelector("#Num2").value;
+        var valor3 = document.querySelector("#Num3").value;
+        var valor4 = document.querySelector("#Num4").value;
+        valor1 = parseFloat(valor1);
+        valor2 = parseFloat(valor2);
+        valor3 = parseFloat(valor3);
+        valor4 = parseFloat(valor4);
+        var conta = [valor1, valor2, valor3, valor4];
+        conta.sort((a,b) => a-b);
+        document.querySelector("#mediana").innerHTML = ((conta[1]+conta[2])/2);
+        var media = (conta[0]+conta[1]+conta[2]+conta[3])/conta.length;
+        document.querySelector("#media").innerHTML = (media);
+        var variancia = (((conta[0] - media) * (conta[0] - media)) + ((conta[1] - media) * (conta[1] - media)) + ((conta[2] - media) * (conta[2] - media)) + 
+        ((conta[3] - media) * (conta[3] - media)))/(conta.length-1);
+        document.querySelector("#variancia").innerHTML = (variancia);  
+        var desvPad = Math.sqrt(variancia);    
+        document.querySelector("#Dv").innerHTML = (desvPad)
+        var cocVar = (desvPad/media) * 100 
+        cocVar = Math.round(cocVar);
+        document.querySelector("#coefDes").innerHTML = (cocVar + "%");
+        if (cocVar <= 30)
+        {
+            document.querySelector("#classificacao").innerHTML = "os dados são homogêneos"
+        }   
+        else
+
+        {
+            document.querySelector("#classificacao").innerHTML = "os dados são heterogêneos"
+        }   
+
+   }
+        
+    </script>
+</body>
+</html>
