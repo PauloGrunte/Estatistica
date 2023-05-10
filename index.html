@@ -48,6 +48,9 @@
         var valor2 = document.querySelector("#Num2").value;
         var valor3 = document.querySelector("#Num3").value;
         var valor4 = document.querySelector("#Num4").value;
+        if (valor1 && valor2 && valor3 && valor4 != "")
+        {
+         
         valor1 = parseFloat(valor1);
         valor2 = parseFloat(valor2);
         valor3 = parseFloat(valor3);
@@ -75,7 +78,13 @@
             document.querySelector("#classificacao").innerHTML = "os dados são heterogêneos"
         }   
 
-   }
+    } 
+    else 
+        {
+            alert("Todos os campos devem ser preenchidos!");
+         }
+        }
+       
         
     </script>
 </body>
